@@ -1,0 +1,12 @@
+*.tpf
+*.ppf
+*.apf
+*.kat
+*.o
+*.exe
+*.txt
+*.bat
+*.subl*
+*/*
+
+!Format.txt
