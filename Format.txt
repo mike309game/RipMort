@@ -2,7 +2,7 @@ Pack file format (made up name)
 
 Header
 
-short: Type (31 for texture (tpf) , 32 for animation/model (apf, ppf))
+short: Type (0x31 for texture (tpf) , 0x32 for animation/model (apf, ppf))
 short: File count
 long: Address of first file data minus 0x14
 long: Unknown, always 14
