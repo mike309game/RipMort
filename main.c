@@ -14,7 +14,7 @@
 
 pack_file_t* pack_files;
 
-//stackoverflow.com/a/2736841
+/* stackoverflow.com/a/2736841 */
 char *ext_remove(const char* myStr) {
     char *retStr;
     char *lastExt;
@@ -35,9 +35,6 @@ int main(int argc, char const *argv[])
 		perror("Give me files");
 		exit(EXIT_FAILURE);
 	}
-
-	/* Allocate pointer file array */
-	//pack_files = (pack_file_t*)malloc(sizeof(pack_file_t)*argc-1);
 
 	for (int i = 1; i < argc; ++i) {
 		char* argv_no_ext = ext_remove(argv[i]);
