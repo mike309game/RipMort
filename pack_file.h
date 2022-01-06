@@ -40,6 +40,6 @@ typedef struct pointer_file_t {
 } pack_file_t;
 
 pack_file_t load_pack_file(const char filename[]);
-void free_pack_file(pack_file_t pack_file);
+void free_pack_file(pack_file_t* pack_file);
 
 #endif

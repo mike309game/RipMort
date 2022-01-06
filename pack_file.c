@@ -67,9 +67,9 @@ pack_file_t load_pack_file(const char *filename) {
 	return pack_file;
 }
 
-void free_pack_file(pack_file_t pack_file) {
-	for (int i = 0; i < pack_file.file_count; ++i) {
-		free(pack_file.files[i].data);
+void free_pack_file(pack_file_t* pack_file) {
+	for (int i = 0; i < pack_file->file_count; ++i) {
+		free(pack_file->files[i].data);
 	}
-	free(pack_file.files);
+	free(pack_file->files);
 }

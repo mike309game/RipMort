@@ -58,7 +58,7 @@ int main(int argc, char const *argv[])
 			fwrite(pack_file.files[j].data, pack_file.files[j].data_length, 1, fp);
 			fclose(fp);
 		}
-		free_pack_file(pack_file);
+		free_pack_file(&pack_file);
 		free(argv_no_ext);
 	}
 
