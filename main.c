@@ -46,16 +46,16 @@ int main(int argc, char const *argv[])
 		/* Random size */
 		char path[0xFF];
 
-		for (int j = 0; j < pack_file.file_count; ++j) {
+		for (int j = 0; j < pack_file.item_count; ++j) {
 			/* Make file name */
-			sprintf(path, "%s/%s", argv_no_ext, pack_file.files[j].name);
+			sprintf(path, "%s/%s", argv_no_ext, pack_file.items[j].name);
 
 			FILE* fp = fopen(path, "wb");
 			if(!fp) {
-				perror("Error creating extracted file");
+				perror("Error creating extracted item");
 				exit(EXIT_FAILURE);
 			}
-			fwrite(pack_file.files[j].data, pack_file.files[j].data_length, 1, fp);
+			fwrite(pack_file.items[j].data, pack_file.items[j].data_length, 1, fp);
 			fclose(fp);
 		}
 		free_pack_file(&pack_file);

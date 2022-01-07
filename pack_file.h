@@ -1,5 +1,5 @@
 #ifndef _PACK_FILE_H
-#define _PACK_FILE_H
+#define _PACK_FILE_H 1
 #include <errno.h>
 #include <string.h>
 
@@ -11,6 +11,9 @@
 #endif
 #define PF_ERR(string, ...) fprintf(stderr, string, __VA_ARGS__, strerror( errno ));
 
+static const char PACK_FILE_HEADER_SIZE = 0x14;
+static const char PF_ITEM_HEADER_SIZE = 0x18;
+
 enum pack_file_kind {
 	PF_TEX = 0x31,
 	PF_PMD = 0x32,
@@ -21,12 +24,12 @@ typedef struct pf_file_t {
 	long data_length;
 	long combined_size_since_last_file;
 	char* data;
-} pf_file_t;
+} pf_item_t;
 
 typedef struct pointer_file_t {
 	/* Look at file kind enum */
 	short type;
-	short file_count;
+	short item_count;
 	/* Despite the file having the address to the first data block,
 		the game chose to use this and adds 0x14 to it and ANDs it by (~3)*/
 	long first_data_address_minus_0x14;
@@ -36,7 +39,7 @@ typedef struct pointer_file_t {
 	long filesize_without_header;
 	/* Not used by game, for whatever reason */
 	long first_data_address;
-	pf_file_t* files;
+	pf_item_t* items;
 } pack_file_t;
 
 pack_file_t load_pack_file(const char filename[]);
